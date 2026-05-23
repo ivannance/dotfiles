@@ -8,7 +8,8 @@ cp ssh_config ~/.ssh/config
 chmod 600 ~/.ssh/config
 
 echo "Setting up git..."
-cp gitconfig ~/.gitconfig
+mkdir -p ~/.config/git
+cp gitconfig ~/.config/git/config
 
 echo "Done. Add your SSH key to the home server:"
 echo "ssh-copy-id -p 2222 ivan@ivans.world"
