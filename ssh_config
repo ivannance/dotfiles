@@ -4,3 +4,8 @@ Host homeserver
     User ivan
     IdentityFile ~/.ssh/id_ed25519
     SetEnv TERM=xterm-256color
+
+Host vps
+    HostName 192.3.16.75
+    User root
+    IdentityFile ~/.ssh/id_ed25519
