@@ -1,0 +1,6 @@
+Host homeserver
+    HostName ivans.world
+    Port 2222
+    User ivan
+    IdentityFile ~/.ssh/id_ed25519
+    SetEnv TERM=xterm-256color
