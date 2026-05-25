@@ -1,3 +1,3 @@
 function repos
-    ssh homeserver "ls /DATA/repos" | sed 's/\.git//'
+    ssh mini "ls /DATA/repos" | sed 's/\.git//'
 end

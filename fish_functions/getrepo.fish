@@ -1,3 +1,3 @@
 function getrepo
-    git clone homeserver:repos/$argv[1].git
+    git clone mini:/DATA/repos/$argv[1].git
 end

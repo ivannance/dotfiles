@@ -11,9 +11,13 @@ echo "Setting up git..."
 mkdir -p ~/.config/git
 cp gitconfig ~/.config/git/config
 
-echo "Setting up fish functions..."
+echo "Updating fish functions..."
 mkdir -p ~/.config/fish/functions
-cp -r fish_functions/* ~/.config/fish/functions/
+rm -f ~/.config/fish/functions/*
+if [ -d "fish_functions" ]; then
+  cp -r fish_functions/* ~/.config/fish/functions/
+  echo "Fish functions synchronized successfully."
+fi
 
 echo "Checking for SSH key..."
 if [ ! -f ~/.ssh/id_ed25519 ]; then
@@ -21,11 +25,16 @@ if [ ! -f ~/.ssh/id_ed25519 ]; then
   ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""
 fi
 
-echo "Adding SSH key to home server..."
-ssh-copy-id -p 2222 ivan@ivans.world
+export SSH_CONFIG_FILE="$HOME/.ssh/config"
 
-echo "Adding SSH key to VPS via homeserver..."
-cat ~/.ssh/id_ed25519.pub | ssh homeserver "ssh root@192.3.16.75 'cat >> ~/.ssh/authorized_keys'"
+echo "Adding SSH key to mini home server..."
+ssh-copy-id mini
+
+echo "Adding SSH key to home PC..."
+ssh-copy-id pc
+
+echo "Adding SSH key to VPS via mini..."
+cat ~/.ssh/id_ed25519.pub | ssh mini "ssh root@192.3.16.75 'cat >> ~/.ssh/authorized_keys'"
 
 echo "Setting fish as default shell..."
 FISH_PATH=$(which fish)
@@ -41,4 +50,4 @@ if [ -n "$FISH_PATH" ]; then
   fi
 fi
 
-echo "Done! Open a new terminal to start using fish."
+echo "Done! Configuration setup complete."
