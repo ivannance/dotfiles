@@ -11,6 +11,10 @@ Host pc
     HostName batman
     User familypc
 
+Host laptop
+    HostName peach
+    User ivan
+
 Host *
     IdentityFile ~/.ssh/id_ed25519
     SetEnv TERM=xterm-256color

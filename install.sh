@@ -33,6 +33,9 @@ ssh-copy-id mini
 echo "Adding SSH key to home PC..."
 ssh-copy-id pc
 
+echo "Adding SSH key to laptop..."
+ssh-copy-id laptop
+
 echo "Adding SSH key to VPS via mini..."
 cat ~/.ssh/id_ed25519.pub | ssh mini "ssh root@192.3.16.75 'cat >> ~/.ssh/authorized_keys'"
 
